@@ -7,5 +7,5 @@ dailyAkariSolver.py を実行すると遊べます。
 入力例も dailyAkariSolver.py にコメントで書いてあるので、真似すればよいです。
 
 ## リンク集
-Daily Akari: https://dailyakari.com
-ゆるふわ解説記事: //TODO
+* Daily Akari: https://dailyakari.com
+* ゆるふわ解説記事: https://kntychance.hatenablog.jp/entry/2025/04/12/002823
