@@ -240,6 +240,31 @@ class ZDD_Node:
             else:
                 self.zdd._cache_table[key] = self.zdd.get_node(self.top, self.zero.hint_le(E.nxt, h), self.one.hint_le(E.nxt, h-1))
         return self.zdd._cache_table[key]
+
+    def hint_range(self, E:SharedList, hl:int, hr:int):
+        if hr == 0:
+            return self.offset_s(E)
+        elif len(E) <= hl or self is self.zdd.zero_terminal:
+            return self.zdd.zero_terminal
+        elif hl == 0:
+            return self.hint_le(E, hr)
+        elif len(E) <= hr:
+            return self.hint_ge(E, hl)
+        elif self is self.zdd.one_terminal:
+            if hl > 0:
+                return self.zdd.zero_terminal
+            else:
+                return self.zdd.one_terminal
+        e = E.top
+        key = (self.hint_range, self, E, hl, hr)
+        if key not in self.zdd._cache_table:
+            if self.zdd.idx[self.top] < self.zdd.idx[e]:
+                self.zdd._cache_table[key] = self.zdd.get_node(self.top, self.zero.hint_range(E, hl, hr), self.one.hint_range(E, hl, hr))
+            elif self.zdd.idx[self.top] > self.zdd.idx[e]:
+                self.zdd._cache_table[key] = self.hint_range(E.nxt, hl, hr)
+            else:
+                self.zdd._cache_table[key] = self.zdd.get_node(self.top, self.zero.hint_range(E.nxt, hl, hr), self.one.hint_range(E.nxt, hl-1, hr-1))
+        return self.zdd._cache_table[key]
     
     def count(self) -> int:
         """
