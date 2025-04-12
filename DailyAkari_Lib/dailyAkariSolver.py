@@ -24,7 +24,7 @@ class DailyAkariSolver:
                 x = self.probrem.board[i][j]
                 if x == ".":
                     E = self._get_cross(i, j)
-                    ans = ans.hint_ge(zdd.sl.push(E), 1)
+                    ans = ans.hint_range(zdd.sl.push(E), 1, 2)
                 else:
                     E = self._get_down(i, j)
                     ans = ans.hint_le(zdd.sl.push(E), 1)
