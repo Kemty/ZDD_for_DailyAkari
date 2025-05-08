@@ -9,3 +9,4 @@ dailyAkariSolver.py を実行すると遊べます。
 ## リンク集
 * Daily Akari: https://dailyakari.com
 * ゆるふわ解説記事: https://kntychance.hatenablog.jp/entry/2025/04/12/002823
+* ガチ解説記事: https://kntychance.hatenablog.jp/entry/2025/05/09/001458
